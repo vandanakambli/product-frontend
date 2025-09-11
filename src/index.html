@@ -2,12 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PcWeb</title>
+  <title>PC Web | Product Catalog</title>
   <base href="/">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Pastel Theme Styles -->
+  <style>
+    :root {
+      --pastel-blue: #cccfd3;
+      --pastel-pink: #d6cfcf;
+      --pastel-green: #cdeac0;
+      --pastel-purple: #e4c1f9;
+      --text-dark: #374151;
+      --bg-light: #fdfdfd;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-purple));
+      color: #fff;
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+      box-shadow: 0 4px 8px rgba(231, 229, 229, 0.1);
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    main {
+      padding: 2rem;
+      min-height: calc(100vh - 140px);
+      background: linear-gradient(180deg, #e2e0e0, var(--pastel-green) 90%);
+      border-radius: 20px;
+      margin: 1.5rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+      background: var(--pastel-pink);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.08);
+    }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+  <header>
+    <span>Harman products</span>
+    <nav>
+      <!-- Replace href with Angular routerLink later -->
+      <a href="/">Home</a>
+      <a href="/create">Add Product</a>
+    </nav>
+  </header>
+
+  <main>
+    <app-root></app-root>
+  </main>
+
+  <footer>
+     Made with love 
+  </footer>
 </body>
 </html>
