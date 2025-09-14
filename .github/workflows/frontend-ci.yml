@@ -5,10 +5,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write   # <-- This allows pushing to gh-pages
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,4 +30,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/<PC-WEB>
+          publish_dir: ./dist/product-frontend
