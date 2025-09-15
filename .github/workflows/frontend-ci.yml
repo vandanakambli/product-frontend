@@ -24,11 +24,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4. Build Angular app (production)
+      # 4. Install Angular CLI globally
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@20
+
+      # 5. Build Angular app (production)
       - name: Build Angular app
         run: ng build --configuration production
 
-      # 5. Deploy to Azure Web App using publish profile
+      # 6. Deploy to Azure Web App using publish profile
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
