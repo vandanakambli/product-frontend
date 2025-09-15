@@ -1,37 +1,37 @@
-name: Frontend CI/CD
+name: Build and Deploy Angular App
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to main branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repo
+      # Checkout your repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js
-      - name: Use Node.js
+      # Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20.x'
 
-      # Step 3: Install dependencies
+      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Build Angular project
-      - name: Build Angular project
+      # Build the Angular app
+      - name: Build Angular app
         run: npm run build --if-present
 
-      # Step 5: Deploy to Azure App Service
+      # Deploy to Azure Web App using publish profile
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: webapp123        # 👈 your Azure Web App name
+          app-name: webapp123                      # Your Azure Web App name
+          package: ./dist/pc-web                   # Adjust if your dist folder name is different
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./dist/pc-web        # 👈 path to your Angular build output
